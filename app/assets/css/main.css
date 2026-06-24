@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --color-term-bg: #05010d;
+  --color-term-panel: #130826;
+  --color-term-border: #3b2070;
+  --color-term-text: #9f7aea;
+  --color-term-green: #4ade80;
+}
+
+:root {
+  background-color: var(--color-term-bg);
+  color: var(--color-term-text);
+  font-family: 'Fira Code', monospace; 
+}
