@@ -11,13 +11,11 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  runtimeConfig:  {
+  runtimeConfig: {
     public: {
       apiUrl: 'http://localhost:8080'
     }
   },
-
-
 
   compatibilityDate: '2025-01-15',
 

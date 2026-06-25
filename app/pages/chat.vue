@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Dialog } from '@headlessui/vue';
+import { Dialog } from '@headlessui/vue'
 import { PhPlus, PhTerminal } from '@phosphor-icons/vue'
 import { ref, computed, onMounted, nextTick } from 'vue'
 
@@ -9,9 +9,8 @@ definePageMeta({
 
 const { user, logout } = useAuth()
 
-const isNewRoomModalOpen = ref(false);
-const isUserModalOpen = ref(false);
-
+const isNewRoomModalOpen = ref(false)
+const isUserModalOpen = ref(false)
 
 interface Message {
   id: number
@@ -136,34 +135,48 @@ onMounted(() => {
             <PhTerminal :size="20" />
           </button>
 
-          <button 
-            @click="isNewRoomModalOpen = true"
+          <button
             class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 font-medium text-term-text hover:text-white text-lg transition-all cursor-pointer select-none"
+            @click="isNewRoomModalOpen = true"
           >
             <PhPlus :size="20" />
           </button>
 
-          <Dialog :open="isNewRoomModalOpen" @close="isNewRoomModalOpen = false" class="z-50 relative font-mono text-term-text">
+          <Dialog
+            :open="isNewRoomModalOpen"
+            class="z-50 relative font-mono text-term-text"
+            @close="isNewRoomModalOpen = false"
+          >
             <div>
               <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
                 <p>New Room</p>
-              </div>          
+              </div>
             </div>
           </Dialog>
         </div>
 
         <!-- Bottom User Profile Card -->
-        
-        <div @click="isUserModalOpen = true" class="group flex flex-col items-center gap-1">
+
+        <div
+          class="group flex flex-col items-center gap-1"
+          @click="isUserModalOpen = true"
+        >
           <div class="relative flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 transition-all cursor-pointer">
             <span class="font-bold text-term-text text-sm">{{ user?.username?.charAt(0)?.toUpperCase() || 'U' }}</span>
             <div class="right-0 bottom-0 absolute bg-term-green border border-term-bg w-2.5 h-2.5" />
           </div>
           <span class="mt-1 text-[9px] text-term-text/60 select-none">{{ user?.username || 'you' }}</span>
         </div>
-        <Dialog :open="isUserModalOpen" @close="isUserModalOpen = false" class="z-50 relative font-mono text-term-text">
+        <Dialog
+          :open="isUserModalOpen"
+          class="z-50 relative font-mono text-term-text"
+          @close="isUserModalOpen = false"
+        >
           <div>
-            <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2" tabindex="-1">
+            <div
+              class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2"
+              tabindex="-1"
+            >
               <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center gap-2">
                   <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm">
@@ -180,8 +193,13 @@ onMounted(() => {
               </div>
               <UserInfo />
               <!-- FIXME -->
-              <button class="sr-only" autofocus>Initial Focus</button>
-            </div>          
+              <button
+                class="sr-only"
+                autofocus
+              >
+                Initial Focus
+              </button>
+            </div>
           </div>
         </Dialog>
       </aside>

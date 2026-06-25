@@ -8,7 +8,7 @@ onMounted(async () => {
 })
 
 // ── Terminal Demo State ──────────────────────────────
-const terminalLines = ref<{ text: string; type: string }[]>([])
+const terminalLines = ref<{ text: string, type: string }[]>([])
 const terminalReady = ref(false)
 
 const demoScript = [
@@ -170,7 +170,11 @@ const features = [
     <header class="sticky top-0 z-50 border-b border-term-border/50 backdrop-blur-xl bg-term-bg/80">
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center gap-3 group" aria-label="KFault Home">
+        <NuxtLink
+          to="/"
+          class="flex items-center gap-3 group"
+          aria-label="KFault Home"
+        >
           <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm group-hover:border-term-green transition-colors">
             K
           </div>
@@ -181,9 +185,18 @@ const features = [
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center gap-8 text-xs">
-          <a href="#features" class="text-term-text/70 hover:text-white transition-colors">Features</a>
-          <a href="#demo" class="text-term-text/70 hover:text-white transition-colors">Demo</a>
-          <a href="#pricing" class="text-term-text/70 hover:text-white transition-colors">Pricing</a>
+          <a
+            href="#features"
+            class="text-term-text/70 hover:text-white transition-colors"
+          >Features</a>
+          <a
+            href="#demo"
+            class="text-term-text/70 hover:text-white transition-colors"
+          >Demo</a>
+          <a
+            href="#pricing"
+            class="text-term-text/70 hover:text-white transition-colors"
+          >Pricing</a>
           <NuxtLink
             :to="isAuthenticated ? '/chat' : '/login'"
             class="flex items-center gap-2 border border-term-green/50 bg-term-green/10 px-4 py-2 text-term-green hover:bg-term-green/20 hover:border-term-green transition-all"
@@ -199,8 +212,55 @@ const features = [
           aria-label="Toggle mobile navigation"
           @click="mobileNavOpen = !mobileNavOpen"
         >
-          <svg v-if="!mobileNavOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
-          <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+          <svg
+            v-if="!mobileNavOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ><line
+            x1="3"
+            y1="6"
+            x2="21"
+            y2="6"
+          /><line
+            x1="3"
+            y1="12"
+            x2="21"
+            y2="12"
+          /><line
+            x1="3"
+            y1="18"
+            x2="21"
+            y2="18"
+          /></svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ><line
+            x1="18"
+            y1="6"
+            x2="6"
+            y2="18"
+          /><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"
+          /></svg>
         </button>
       </nav>
 
@@ -209,9 +269,21 @@ const features = [
         v-if="mobileNavOpen"
         class="md:hidden border-t border-term-border/50 bg-term-bg/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-4 text-xs"
       >
-        <a href="#features" class="text-term-text/70 hover:text-white transition-colors" @click="mobileNavOpen = false">Features</a>
-        <a href="#demo" class="text-term-text/70 hover:text-white transition-colors" @click="mobileNavOpen = false">Demo</a>
-        <a href="#pricing" class="text-term-text/70 hover:text-white transition-colors" @click="mobileNavOpen = false">Pricing</a>
+        <a
+          href="#features"
+          class="text-term-text/70 hover:text-white transition-colors"
+          @click="mobileNavOpen = false"
+        >Features</a>
+        <a
+          href="#demo"
+          class="text-term-text/70 hover:text-white transition-colors"
+          @click="mobileNavOpen = false"
+        >Demo</a>
+        <a
+          href="#pricing"
+          class="text-term-text/70 hover:text-white transition-colors"
+          @click="mobileNavOpen = false"
+        >Pricing</a>
         <NuxtLink
           :to="isAuthenticated ? '/chat' : '/login'"
           class="flex items-center gap-2 border border-term-green/50 bg-term-green/10 px-4 py-2 text-term-green w-fit"
@@ -233,28 +305,34 @@ const features = [
         </div>
 
         <!-- Slogan -->
-        <h1 class="fade-in-up delay-100 text-glow font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight tracking-tight max-w-3xl" style="font-family: 'Inter', sans-serif;">
+        <h1
+          class="fade-in-up delay-100 text-glow font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight tracking-tight max-w-3xl"
+          style="font-family: 'Inter', sans-serif;"
+        >
           Keeping you faultlessly connected.
         </h1>
 
         <!-- Subtitle -->
-        <p class="fade-in-up delay-200 mt-6 max-w-xl text-sm md:text-base text-term-text/70 leading-relaxed" style="font-family: 'Inter', sans-serif;">
+        <p
+          class="fade-in-up delay-200 mt-6 max-w-xl text-sm md:text-base text-term-text/70 leading-relaxed"
+          style="font-family: 'Inter', sans-serif;"
+        >
           A fault-tolerant, terminal-first messenger built for developers who ship fast and can't afford dropped connections.
         </p>
 
         <!-- CTAs -->
         <div class="fade-in-up delay-300 mt-10 flex flex-col sm:flex-row items-center gap-4">
           <NuxtLink
-            :to="isAuthenticated ? '/chat' : '/login'"
             id="cta-start-chatting"
+            :to="isAuthenticated ? '/chat' : '/login'"
             class="group relative inline-flex items-center gap-2 bg-term-green/15 border border-term-green/50 px-8 py-3 text-sm text-term-green font-semibold hover:bg-term-green/25 hover:border-term-green hover:shadow-[0_0_24px_rgba(74,222,128,0.2)] transition-all duration-300"
           >
             <span class="inline-block h-2 w-2 bg-term-green animate-pulse" />
             {{ isAuthenticated ? 'Open Chat' : 'Start Chatting' }}
           </NuxtLink>
           <a
-            href="https://github.com"
             id="cta-read-docs"
+            href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 border border-term-border px-8 py-3 text-sm text-term-text/70 hover:text-white hover:border-term-text transition-all duration-300"
@@ -276,14 +354,33 @@ const features = [
           </div>
           <!-- Terminal Body -->
           <div class="h-72 overflow-hidden px-5 py-4 text-xs leading-relaxed">
-            <div v-for="(line, idx) in terminalLines" :key="idx" class="mb-0.5">
+            <div
+              v-for="(line, idx) in terminalLines"
+              :key="idx"
+              class="mb-0.5"
+            >
               <span v-if="line.type === 'spacer'">&nbsp;</span>
-              <span v-else-if="line.type === 'command'" class="text-white">{{ line.text }}</span>
-              <span v-else-if="line.type === 'success'" class="text-term-green">{{ line.text }}</span>
-              <span v-else-if="line.type === 'warning'" class="text-term-amber">{{ line.text }}</span>
-              <span v-else class="text-term-text/60">{{ line.text }}</span>
+              <span
+                v-else-if="line.type === 'command'"
+                class="text-white"
+              >{{ line.text }}</span>
+              <span
+                v-else-if="line.type === 'success'"
+                class="text-term-green"
+              >{{ line.text }}</span>
+              <span
+                v-else-if="line.type === 'warning'"
+                class="text-term-amber"
+              >{{ line.text }}</span>
+              <span
+                v-else
+                class="text-term-text/60"
+              >{{ line.text }}</span>
             </div>
-            <span v-if="terminalReady" class="cursor-blink text-white text-xs" />
+            <span
+              v-if="terminalReady"
+              class="cursor-blink text-white text-xs"
+            />
           </div>
         </div>
       </div>
@@ -296,7 +393,9 @@ const features = [
       class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
     >
       <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">// features</p>
+        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+          // features
+        </p>
         <h2
           class="font-bold text-2xl md:text-3xl text-white tracking-tight"
           style="font-family: 'Inter', sans-serif;"
@@ -315,11 +414,19 @@ const features = [
             [`delay-${(i + 1) * 100}`]: revealedSections.has('features')
           }"
         >
-          <div class="text-2xl mb-4">{{ feat.icon }}</div>
-          <h3 class="text-white font-semibold text-base mb-2" style="font-family: 'Inter', sans-serif;">
+          <div class="text-2xl mb-4">
+            {{ feat.icon }}
+          </div>
+          <h3
+            class="text-white font-semibold text-base mb-2"
+            style="font-family: 'Inter', sans-serif;"
+          >
             {{ feat.title }}
           </h3>
-          <p class="text-term-text/60 text-xs leading-relaxed mb-4" style="font-family: 'Inter', sans-serif;">
+          <p
+            class="text-term-text/60 text-xs leading-relaxed mb-4"
+            style="font-family: 'Inter', sans-serif;"
+          >
             {{ feat.desc }}
           </p>
           <div class="border border-term-border/50 bg-term-bg/50 px-3 py-2 text-[11px] text-term-green/80">
@@ -336,14 +443,19 @@ const features = [
       class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
     >
       <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">// interactive demo</p>
+        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+          // interactive demo
+        </p>
         <h2
           class="font-bold text-2xl md:text-3xl text-white tracking-tight"
           style="font-family: 'Inter', sans-serif;"
         >
           See fault-tolerance in action
         </h2>
-        <p class="mt-4 text-sm text-term-text/50 max-w-lg mx-auto" style="font-family: 'Inter', sans-serif;">
+        <p
+          class="mt-4 text-sm text-term-text/50 max-w-lg mx-auto"
+          style="font-family: 'Inter', sans-serif;"
+        >
           Simulate a network failure and watch KFault gracefully buffer, recover, and sync — with zero message loss.
         </p>
       </div>
@@ -370,9 +482,15 @@ const features = [
                     'bg-term-amber animate-pulse': faultPhase === 'recovering'
                   }"
                 />
-                <span :class="statusColor" class="transition-colors duration-300">{{ statusText }}</span>
+                <span
+                  :class="statusColor"
+                  class="transition-colors duration-300"
+                >{{ statusText }}</span>
               </div>
-              <div v-if="queuedMessages > 0" class="text-[10px] text-term-amber">
+              <div
+                v-if="queuedMessages > 0"
+                class="text-[10px] text-term-amber"
+              >
                 queue: {{ queuedMessages }} msgs
               </div>
             </div>
@@ -391,7 +509,10 @@ const features = [
               >
                 ✉
               </div>
-              <span v-if="queuedMessages === 0 && faultPhase === 'idle'" class="text-[10px] text-term-text/30">
+              <span
+                v-if="queuedMessages === 0 && faultPhase === 'idle'"
+                class="text-[10px] text-term-text/30"
+              >
                 no messages in queue
               </span>
             </div>
@@ -427,7 +548,9 @@ const features = [
       class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
     >
       <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">// pricing</p>
+        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+          // pricing
+        </p>
         <h2
           class="font-bold text-2xl md:text-3xl text-white tracking-tight"
           style="font-family: 'Inter', sans-serif;"
@@ -438,17 +561,28 @@ const features = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
         <!-- Self-Hosted -->
-        <div class="glass-card p-8 flex flex-col"
+        <div
+          class="glass-card p-8 flex flex-col"
           :class="{
             'fade-in-up': revealedSections.has('pricing')
           }"
         >
-          <p class="text-[10px] text-term-text/40 uppercase tracking-widest mb-4">Self-Hosted</p>
-          <div class="text-3xl font-bold text-white mb-1" style="font-family: 'Inter', sans-serif;">
+          <p class="text-[10px] text-term-text/40 uppercase tracking-widest mb-4">
+            Self-Hosted
+          </p>
+          <div
+            class="text-3xl font-bold text-white mb-1"
+            style="font-family: 'Inter', sans-serif;"
+          >
             $0
           </div>
-          <p class="text-xs text-term-text/40 mb-6">forever free, forever yours</p>
-          <ul class="space-y-3 text-xs text-term-text/70 flex-1 mb-8" style="font-family: 'Inter', sans-serif;">
+          <p class="text-xs text-term-text/40 mb-6">
+            forever free, forever yours
+          </p>
+          <ul
+            class="space-y-3 text-xs text-term-text/70 flex-1 mb-8"
+            style="font-family: 'Inter', sans-serif;"
+          >
             <li class="flex items-start gap-2">
               <span class="text-term-green mt-0.5">✓</span>
               Unlimited users & rooms
@@ -471,10 +605,10 @@ const features = [
             </li>
           </ul>
           <a
+            id="pricing-self-hosted"
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            id="pricing-self-hosted"
             class="block border border-term-green/50 bg-term-green/10 py-3 text-center text-sm text-term-green font-semibold hover:bg-term-green/20 hover:border-term-green transition-all"
           >
             git clone →
@@ -482,20 +616,31 @@ const features = [
         </div>
 
         <!-- Managed Cloud -->
-        <div class="glass-card p-8 flex flex-col border-term-glow/30"
+        <div
+          class="glass-card p-8 flex flex-col border-term-glow/30"
           :class="{
             'fade-in-up delay-200': revealedSections.has('pricing')
           }"
         >
           <div class="flex items-center gap-3 mb-4">
-            <p class="text-[10px] text-term-text/40 uppercase tracking-widest">Managed Cloud</p>
+            <p class="text-[10px] text-term-text/40 uppercase tracking-widest">
+              Managed Cloud
+            </p>
             <span class="px-2 py-0.5 text-[9px] bg-term-glow/15 border border-term-glow/30 text-term-glow uppercase tracking-wider">Soon</span>
           </div>
-          <div class="text-3xl font-bold text-white mb-1" style="font-family: 'Inter', sans-serif;">
+          <div
+            class="text-3xl font-bold text-white mb-1"
+            style="font-family: 'Inter', sans-serif;"
+          >
             $9
           </div>
-          <p class="text-xs text-term-text/40 mb-6">per user / month</p>
-          <ul class="space-y-3 text-xs text-term-text/70 flex-1 mb-8" style="font-family: 'Inter', sans-serif;">
+          <p class="text-xs text-term-text/40 mb-6">
+            per user / month
+          </p>
+          <ul
+            class="space-y-3 text-xs text-term-text/70 flex-1 mb-8"
+            style="font-family: 'Inter', sans-serif;"
+          >
             <li class="flex items-start gap-2">
               <span class="text-term-green mt-0.5">✓</span>
               Everything in Self-Hosted
@@ -541,8 +686,16 @@ const features = [
 
         <!-- Right -->
         <div class="flex items-center gap-6 text-xs text-term-text/40">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
-          <a href="#" class="hover:text-white transition-colors">Docs</a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-white transition-colors"
+          >GitHub</a>
+          <a
+            href="#"
+            class="hover:text-white transition-colors"
+          >Docs</a>
           <div class="flex items-center gap-1.5">
             <span class="inline-block h-1.5 w-1.5 bg-term-green animate-pulse" />
             <span class="text-term-green/60">status: operational</span>

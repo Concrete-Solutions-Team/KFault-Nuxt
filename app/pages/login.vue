@@ -35,7 +35,11 @@ const handleSubmit = async () => {
     <div class="relative z-10 w-full max-w-md">
       <!-- Logo -->
       <div class="mb-10 flex flex-col items-center gap-3">
-        <NuxtLink to="/" class="flex items-center gap-3 group" aria-label="KFault Home">
+        <NuxtLink
+          to="/"
+          class="flex items-center gap-3 group"
+          aria-label="KFault Home"
+        >
           <div class="flex h-10 w-10 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-base group-hover:border-term-green transition-colors">
             K
           </div>
@@ -61,7 +65,10 @@ const handleSubmit = async () => {
           >
             Welcome back
           </h1>
-          <p class="text-xs text-term-text/50 mb-8" style="font-family: 'Inter', sans-serif;">
+          <p
+            class="text-xs text-term-text/50 mb-8"
+            style="font-family: 'Inter', sans-serif;"
+          >
             Authenticate to resume your session.
           </p>
 
@@ -74,10 +81,16 @@ const handleSubmit = async () => {
             <span>{{ error }}</span>
           </div>
 
-          <form class="space-y-5" @submit.prevent="handleSubmit">
+          <form
+            class="space-y-5"
+            @submit.prevent="handleSubmit"
+          >
             <!-- Username -->
             <div>
-              <label for="login-username" class="block text-[10px] text-term-text/40 uppercase tracking-widest mb-2">
+              <label
+                for="login-username"
+                class="block text-[10px] text-term-text/40 uppercase tracking-widest mb-2"
+              >
                 Username
               </label>
               <div class="flex items-center border border-term-border bg-term-bg/50 focus-within:border-term-text transition-colors">
@@ -89,13 +102,16 @@ const handleSubmit = async () => {
                   autocomplete="username"
                   placeholder="your_username"
                   class="w-full bg-transparent px-3 py-3 text-sm text-white outline-none placeholder-term-text/30 caret-term-green"
-                />
+                >
               </div>
             </div>
 
             <!-- Password -->
             <div>
-              <label for="login-password" class="block text-[10px] text-term-text/40 uppercase tracking-widest mb-2">
+              <label
+                for="login-password"
+                class="block text-[10px] text-term-text/40 uppercase tracking-widest mb-2"
+              >
                 Password
               </label>
               <div class="flex items-center border border-term-border bg-term-bg/50 focus-within:border-term-text transition-colors">
@@ -107,7 +123,7 @@ const handleSubmit = async () => {
                   autocomplete="current-password"
                   placeholder="••••••••"
                   class="w-full bg-transparent px-3 py-3 text-sm text-white outline-none placeholder-term-text/30 caret-term-green"
-                />
+                >
               </div>
             </div>
 
@@ -118,15 +134,24 @@ const handleSubmit = async () => {
               :disabled="isLoading"
               class="w-full border border-term-green/50 bg-term-green/10 py-3 text-sm text-term-green font-semibold hover:bg-term-green/20 hover:border-term-green transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              <span v-if="isLoading" class="animate-pulse">authenticating...</span>
+              <span
+                v-if="isLoading"
+                class="animate-pulse"
+              >authenticating...</span>
               <span v-else>[ login ]</span>
             </button>
           </form>
 
           <!-- Register Link -->
-          <p class="mt-6 text-center text-xs text-term-text/40" style="font-family: 'Inter', sans-serif;">
+          <p
+            class="mt-6 text-center text-xs text-term-text/40"
+            style="font-family: 'Inter', sans-serif;"
+          >
             No account?
-            <NuxtLink to="/register" class="text-term-text hover:text-white transition-colors ml-1">
+            <NuxtLink
+              to="/register"
+              class="text-term-text hover:text-white transition-colors ml-1"
+            >
               [ register ]
             </NuxtLink>
           </p>
@@ -135,7 +160,10 @@ const handleSubmit = async () => {
 
       <!-- Back to landing -->
       <div class="mt-6 text-center">
-        <NuxtLink to="/" class="text-[10px] text-term-text/30 hover:text-term-text/60 transition-colors">
+        <NuxtLink
+          to="/"
+          class="text-[10px] text-term-text/30 hover:text-term-text/60 transition-colors"
+        >
           ← back to home
         </NuxtLink>
       </div>

@@ -38,16 +38,15 @@ export const useAuth = () => {
     }
   }
 
-  const login = async (username: string, password: string): Promise<{ success: boolean; error?: string }> => {
+  const login = async (username: string, password: string): Promise<{ success: boolean, error?: string }> => {
     isLoading.value = true
     try {
-      const data = await $fetch<AuthResponse>(`${api}/auth/login`, {
+      await $fetch<AuthResponse>(`${api}/auth/login`, {
         method: 'POST',
         credentials: 'include',
         body: { username, password }
       })
-      // Cookie is set by the server via Set-Cookie header.
-      // Hydrate user state from the profile endpoint.
+
       await fetchUser()
       return { success: true }
     } catch (err: unknown) {
@@ -58,16 +57,14 @@ export const useAuth = () => {
     }
   }
 
-  const register = async (username: string, password: string): Promise<{ success: boolean; error?: string }> => {
+  const register = async (username: string, password: string): Promise<{ success: boolean, error?: string }> => {
     isLoading.value = true
     try {
-      const data = await $fetch<AuthResponse>(`${api}/auth/register`, {
+      await $fetch<AuthResponse>(`${api}/auth/register`, {
         method: 'POST',
         credentials: 'include',
         body: { username, password }
       })
-      // Cookie is set by the server via Set-Cookie header.
-      // Hydrate user state from the profile endpoint.
       await fetchUser()
       return { success: true }
     } catch (err: unknown) {
