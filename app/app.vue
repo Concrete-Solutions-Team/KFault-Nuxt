@@ -11,15 +11,14 @@ useHead({
   }
 })
 
-const title = 'KFault'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'KFault — Keeping you faultlessly connected.'
+const description = 'A fault-tolerant, terminal-first messenger built for developers who ship fast and can\'t afford dropped connections.'
 
 useSeoMeta({
   title,
   description,
   ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/starter-light.png',
   twitterCard: 'summary_large_image'
 })
 </script>
