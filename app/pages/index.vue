@@ -1,5 +1,12 @@
 <script setup lang="ts">
+import { Dialog } from '@headlessui/vue';
+import { PhPlus, PhTerminal } from '@phosphor-icons/vue'
 import { ref, computed, onMounted, nextTick } from 'vue'
+
+
+const isNewRoomModalOpen = ref(false);
+const isUserModalOpen = ref(false);
+
 
 interface Message {
   id: number
@@ -113,51 +120,6 @@ onMounted(() => {
 <template>
   <div class="flex flex-col bg-term-bg w-screen h-screen overflow-hidden font-mono text-term-text select-none">
     <!-- Titlebar / Header -->
-    <header class="relative flex justify-between items-center bg-term-bg px-4 border-term-border border-b h-11 shrink-0">
-      <!-- Left side: App Logo -->
-      <div class="flex items-center gap-2">
-        <svg
-          class="w-5 h-5 text-term-text"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
-          />
-          <path d="M8 14s1.5-2 4-2 4 2 4 2" />
-          <line
-            x1="9"
-            y1="9"
-            x2="9.01"
-            y2="9"
-          />
-          <line
-            x1="15"
-            y1="9"
-            x2="15.01"
-            y2="9"
-          />
-        </svg>
-      </div>
-
-      <!-- Center: App Name -->
-      <div class="left-1/2 absolute font-semibold text-term-text text-sm uppercase tracking-widest -translate-x-1/2">
-        KFault
-      </div>
-
-      <!-- Right side: Window controls -->
-      <div class="flex items-center gap-3 text-term-text/80 text-xs">
-        <span class="hover:text-white transition-colors cursor-pointer">_</span>
-        <span class="hover:text-white transition-colors cursor-pointer">⛶</span>
-        <span class="hover:text-white transition-colors cursor-pointer">×</span>
-      </div>
-    </header>
 
     <!-- Main Workspace -->
     <div class="flex flex-1 overflow-hidden">
@@ -165,23 +127,44 @@ onMounted(() => {
       <aside class="flex flex-col justify-between items-center bg-term-bg py-4 border-term-border border-r w-16 shrink-0">
         <!-- Top Icons -->
         <div class="flex flex-col items-center gap-3">
-          <button class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text rounded w-10 h-10 font-bold text-term-text hover:text-white text-sm transition-all cursor-pointer select-none">
-            &gt;_
+          <button class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 font-bold text-term-text hover:text-white text-sm transition-all cursor-pointer select-none">
+            <PhTerminal :size="20" />
           </button>
 
-          <button class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text rounded w-10 h-10 font-medium text-term-text hover:text-white text-lg transition-all cursor-pointer select-none">
-            +
+          <button 
+            @click="isNewRoomModalOpen = true"
+            class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 font-medium text-term-text hover:text-white text-lg transition-all cursor-pointer select-none"
+          >
+            <PhPlus :size="20" />
           </button>
+
+          <Dialog :open="isNewRoomModalOpen" @close="isNewRoomModalOpen = false" class="z-50 relative font-mono text-term-text">
+            <div>
+              <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
+                <p>New Room</p>
+              </div>          
+            </div>
+          </Dialog>
         </div>
 
         <!-- Bottom User Profile Card -->
-        <div class="group flex flex-col items-center gap-1">
-          <div class="relative flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text rounded w-10 h-10 transition-all cursor-pointer">
+        
+        <div @click="isUserModalOpen = true" class="group flex flex-col items-center gap-1">
+          <div class="relative flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 transition-all cursor-pointer">
             <span class="font-bold text-term-text text-sm">U</span>
-            <div class="right-0 bottom-0 absolute bg-term-green border border-term-bg rounded-full w-2.5 h-2.5" />
+            <div class="right-0 bottom-0 absolute bg-term-green border border-term-bg w-2.5 h-2.5" />
           </div>
           <span class="mt-1 text-[9px] text-term-text/60 select-none">you</span>
         </div>
+        <Dialog :open="isUserModalOpen" @close="isUserModalOpen = false" class="z-50 relative font-mono text-term-text">
+          <div>
+            <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col overflow-hidden" tabindex="-1">
+              <UserInfo />
+              <!-- FIXME -->
+              <button class="sr-only" autofocus>Initial Focus</button>
+            </div>          
+          </div>
+        </Dialog>
       </aside>
 
       <!-- Sidebar Room List -->
@@ -195,7 +178,7 @@ onMounted(() => {
           <button
             v-for="room in rooms"
             :key="room.id"
-            class="flex items-center px-3 py-2 rounded w-full text-xs text-left transition-all duration-150 cursor-pointer"
+            class="flex items-center px-3 py-2 w-full text-xs text-left transition-all duration-150 cursor-pointer"
             :class="activeRoomId === room.id
               ? 'bg-term-border/40 border border-term-border text-white font-semibold'
               : 'text-term-text/70 border border-transparent hover:bg-term-panel/50 hover:text-term-text'"
@@ -213,9 +196,9 @@ onMounted(() => {
           <div class="font-semibold text-white text-sm tracking-wider">
             #{{ activeRoom?.name }}
           </div>
-          <div class="flex items-center gap-2 text-term-green text-xs">
-            <span class="inline-block bg-term-green rounded-full w-1.5 h-1.5 animate-pulse" />
-            status: online
+          <div class="flex flex-row items-center gap-2 text-term-green text-xs">
+            <span class="inline-block bg-term-green w-1.5 h-1.5 animate-pulse" />
+            <p>status: online</p>
           </div>
         </div>
 
@@ -231,12 +214,12 @@ onMounted(() => {
             :class="msg.sender === 'you' ? 'items-end' : 'items-start'"
           >
             <!-- Sender tag -->
-            <span class="mb-1 px-1 font-semibold text-[10px] text-term-text/50 select-none">
+            <span class="px-1 font-semibold text-[10px] text-term-text/50 select-none">
               {{ msg.sender }}
             </span>
             <!-- Message container -->
             <div
-              class="px-4 py-2 border rounded max-w-md md:max-w-lg text-xs break-words leading-relaxed whitespace-pre-wrap select-text"
+              class="px-4 py-2 border max-w-md md:max-w-lg text-xs break-words leading-relaxed whitespace-pre-wrap select-text"
               :class="msg.sender === 'you'
                 ? 'border-term-border bg-term-panel/40 text-neutral-200'
                 : 'border-term-border bg-term-panel text-neutral-200'"
@@ -260,7 +243,7 @@ onMounted(() => {
             v-model="messageInput"
             type="text"
             placeholder="message_"
-            class="flex-1 bg-transparent border-none outline-none text-term-text text-xs caret-term-text placeholder-term-text/20"
+            class="flex-1 bg-transparent border-none outline-none text-term-text text-xs caret-term-text placeholder-term-text/60"
             autofocus
           >
 
@@ -278,7 +261,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Scrollbar styling for a retro terminal feel */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

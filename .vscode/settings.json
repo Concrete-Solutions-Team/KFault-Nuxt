@@ -1,0 +1,9 @@
+{
+  "tailwindCSS.experimental.configFile": "app/assets/css/main.css",
+  "tailwindCSS.includeLanguages": {
+    "vue": "html"
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
+}

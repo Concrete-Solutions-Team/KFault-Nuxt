@@ -11,14 +11,17 @@
     "typecheck": "nuxt typecheck"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.23",
     "@iconify-json/lucide": "^1.2.114",
     "@iconify-json/simple-icons": "^1.2.86",
     "@nuxt/ui": "^4.9.0",
+    "@phosphor-icons/vue": "^2.2.1",
     "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@types/node": "^26.0.0",
     "eslint": "^10.5.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.5"

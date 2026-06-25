@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
 @import "tailwindcss";
-@import "@nuxt/ui";
 
 @theme {
   --color-term-bg: #05010d;
