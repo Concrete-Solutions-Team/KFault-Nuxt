@@ -132,14 +132,14 @@ onMounted(() => {
         <!-- Top Icons -->
         <div class="flex flex-col items-center gap-3">
           <button class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 font-bold text-term-text hover:text-white text-sm transition-all cursor-pointer select-none">
-            <PhTerminal :size="20" />
+            <PhTerminal :size="20" data-allow-mismatch />
           </button>
 
           <button
             class="flex justify-center items-center bg-term-panel shadow-sm border border-term-border hover:border-term-text w-10 h-10 font-medium text-term-text hover:text-white text-lg transition-all cursor-pointer select-none"
             @click="isNewRoomModalOpen = true"
           >
-            <PhPlus :size="20" />
+            <PhPlus :size="20" data-allow-mismatch />
           </button>
 
           <ClientOnly>

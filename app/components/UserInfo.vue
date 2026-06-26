@@ -95,7 +95,7 @@ onMounted(async () => {
           class="hidden top-0 right-0 absolute group-hover:flex justify-center items-center bg-term-bg border border-term-border w-6 h-6 text-term-text"
           @click="() => handleFileDelete(img.key)"
         >
-          <PhX />
+          <PhX data-allow-mismatch />
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ onMounted(async () => {
       class="bg-term-panel p-3 border border-term-border hover:border-term-text w-fit transition-colors cursor-pointer"
       @click="triggetFileInput"
     >
-      <PhPlus size="20px" />
+      <PhPlus size="20px" data-allow-mismatch />
       <input
         ref="fileInput"
         type="file"
