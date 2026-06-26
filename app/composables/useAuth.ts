@@ -24,7 +24,9 @@ export const useAuth = () => {
 
   const fetchUser = async (): Promise<boolean> => {
     try {
+      const headers = useRequestHeaders(['cookie'])
       const data = await $fetch<ProfileResponse>(`${api}/auth/me`, {
+        headers: headers as Record<string, string>,
         credentials: 'include'
       })
       user.value = {

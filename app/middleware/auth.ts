@@ -4,7 +4,7 @@ import { useAuth } from '../composables/useAuth'
 export default defineNuxtRouteMiddleware(async () => {
   const { isAuthenticated, fetchUser } = useAuth()
 
-  // If we don't have user state yet, try to hydrate from the cookie
+  // try to auth
   if (!isAuthenticated.value) {
     await fetchUser()
   }
