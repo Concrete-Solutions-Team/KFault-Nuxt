@@ -141,17 +141,19 @@ onMounted(() => {
           >
             <PhPlus :size="20" data-allow-mismatch />
           </button>
-          <Dialog
-            :open="isNewRoomModalOpen"
-            class="z-50 relative font-mono text-term-text"
-            @close="isNewRoomModalOpen = false"
-          >
-            <div>
-              <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
-                <p>New Room</p>
+          <ClientOnly>
+            <Dialog
+              :open="isNewRoomModalOpen"
+              class="z-50 relative font-mono text-term-text"
+              @close="isNewRoomModalOpen = false"
+            >
+              <div>
+                <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <p>New Room</p>
+                </div>
               </div>
-            </div>
-          </Dialog>
+            </Dialog>
+          </ClientOnly>
         </div>
 
         <!-- Bottom User Profile Card -->
