@@ -141,20 +141,17 @@ onMounted(() => {
           >
             <PhPlus :size="20" data-allow-mismatch />
           </button>
-
-          <ClientOnly>
-            <Dialog
-              :open="isNewRoomModalOpen"
-              class="z-50 relative font-mono text-term-text"
-              @close="isNewRoomModalOpen = false"
-            >
-              <div>
-                <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <p>New Room</p>
-                </div>
+          <Dialog
+            :open="isNewRoomModalOpen"
+            class="z-50 relative font-mono text-term-text"
+            @close="isNewRoomModalOpen = false"
+          >
+            <div>
+              <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
+                <p>New Room</p>
               </div>
-            </Dialog>
-          </ClientOnly>
+            </div>
+          </Dialog>
         </div>
 
         <!-- Bottom User Profile Card -->
@@ -180,15 +177,15 @@ onMounted(() => {
                 class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2"
                 tabindex="-1"
               >
-                <div class="flex items-center justify-between mb-4">
+                <div class="flex justify-between items-center mb-4">
                   <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm">
+                    <div class="flex justify-center items-center bg-term-panel border border-term-border w-8 h-8 font-bold text-term-green text-sm">
                       {{ user?.username?.charAt(0)?.toUpperCase() || 'U' }}
                     </div>
-                    <span class="text-sm text-white font-semibold">{{ user?.username }}</span>
+                    <span class="font-semibold text-white text-sm">{{ user?.username }}</span>
                   </div>
                   <button
-                    class="border border-term-border px-3 py-1.5 text-[10px] text-term-text/60 hover:text-red-400 hover:border-red-400/50 transition-colors cursor-pointer"
+                    class="px-3 py-1.5 border border-term-border hover:border-red-400/50 text-[10px] text-term-text/60 hover:text-red-400 transition-colors cursor-pointer"
                     @click="logout()"
                   >
                     [ logout ]
@@ -260,7 +257,7 @@ onMounted(() => {
             </span>
             <!-- Message container -->
             <div
-              class="px-4 py-2 border max-w-md md:max-w-lg text-xs break-words leading-relaxed whitespace-pre-wrap select-text"
+              class="px-4 py-2 border max-w-md md:max-w-lg text-xs wrap-break-word leading-relaxed whitespace-pre-wrap select-text"
               :class="msg.sender === 'you'
                 ? 'border-term-border bg-term-panel/40 text-neutral-200'
                 : 'border-term-border bg-term-panel text-neutral-200'"
