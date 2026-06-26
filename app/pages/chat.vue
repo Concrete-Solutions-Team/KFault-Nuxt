@@ -142,17 +142,19 @@ onMounted(() => {
             <PhPlus :size="20" />
           </button>
 
-          <Dialog
-            :open="isNewRoomModalOpen"
-            class="z-50 relative font-mono text-term-text"
-            @close="isNewRoomModalOpen = false"
-          >
-            <div>
-              <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
-                <p>New Room</p>
+          <ClientOnly>
+            <Dialog
+              :open="isNewRoomModalOpen"
+              class="z-50 relative font-mono text-term-text"
+              @close="isNewRoomModalOpen = false"
+            >
+              <div>
+                <div class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <p>New Room</p>
+                </div>
               </div>
-            </div>
-          </Dialog>
+            </Dialog>
+          </ClientOnly>
         </div>
 
         <!-- Bottom User Profile Card -->
@@ -167,41 +169,43 @@ onMounted(() => {
           </div>
           <span class="mt-1 text-[9px] text-term-text/60 select-none">{{ user?.username || 'you' }}</span>
         </div>
-        <Dialog
-          :open="isUserModalOpen"
-          class="z-50 relative font-mono text-term-text"
-          @close="isUserModalOpen = false"
-        >
-          <div>
-            <div
-              class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2"
-              tabindex="-1"
-            >
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2">
-                  <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm">
-                    {{ user?.username?.charAt(0)?.toUpperCase() || 'U' }}
+        <ClientOnly>
+          <Dialog
+            :open="isUserModalOpen"
+            class="z-50 relative font-mono text-term-text"
+            @close="isUserModalOpen = false"
+          >
+            <div>
+              <div
+                class="top-1/2 left-1/2 fixed inset-0 bg-black/50 backdrop-blur-sm p-4 border border-term-border focus:outline-none w-1/2 h-1/2 -translate-x-1/2 -translate-y-1/2"
+                tabindex="-1"
+              >
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-2">
+                    <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm">
+                      {{ user?.username?.charAt(0)?.toUpperCase() || 'U' }}
+                    </div>
+                    <span class="text-sm text-white font-semibold">{{ user?.username }}</span>
                   </div>
-                  <span class="text-sm text-white font-semibold">{{ user?.username }}</span>
+                  <button
+                    class="border border-term-border px-3 py-1.5 text-[10px] text-term-text/60 hover:text-red-400 hover:border-red-400/50 transition-colors cursor-pointer"
+                    @click="logout()"
+                  >
+                    [ logout ]
+                  </button>
                 </div>
+                <UserInfo />
+                <!-- FIXME -->
                 <button
-                  class="border border-term-border px-3 py-1.5 text-[10px] text-term-text/60 hover:text-red-400 hover:border-red-400/50 transition-colors cursor-pointer"
-                  @click="logout()"
+                  class="sr-only"
+                  autofocus
                 >
-                  [ logout ]
+                  Initial Focus
                 </button>
               </div>
-              <UserInfo />
-              <!-- FIXME -->
-              <button
-                class="sr-only"
-                autofocus
-              >
-                Initial Focus
-              </button>
             </div>
-          </div>
-        </Dialog>
+          </Dialog>
+        </ClientOnly>
       </aside>
 
       <!-- Sidebar Room List -->
