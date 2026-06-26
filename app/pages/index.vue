@@ -161,21 +161,21 @@ const features = [
 </script>
 
 <template>
-  <div class="landing-scroll relative min-h-screen overflow-x-hidden overflow-y-auto font-mono text-term-text bg-term-bg">
+  <div class="relative bg-term-bg min-h-screen overflow-x-hidden overflow-y-auto font-mono text-term-text landing-scroll">
     <!-- Animated Grid Background -->
     <div class="fixed inset-0 grid-bg pointer-events-none" />
-    <div class="fixed inset-0 hero-radial pointer-events-none" />
+    <div class="fixed inset-0 pointer-events-none hero-radial" />
 
     <!-- ═══ HEADER / NAV ═══ -->
-    <header class="sticky top-0 z-50 border-b border-term-border/50 backdrop-blur-xl bg-term-bg/80">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <header class="top-0 z-50 sticky bg-term-bg/80 backdrop-blur-xl border-term-border/50 border-b">
+      <nav class="flex justify-between items-center mx-auto px-6 py-4 max-w-6xl">
         <!-- Logo -->
         <NuxtLink
           to="/"
-          class="flex items-center gap-3 group"
+          class="group flex items-center gap-3"
           aria-label="KFault Home"
         >
-          <div class="flex h-8 w-8 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-sm group-hover:border-term-green transition-colors">
+          <div class="flex justify-center items-center bg-term-panel border border-term-border group-hover:border-term-green w-8 h-8 font-bold text-term-green text-sm transition-colors">
             K
           </div>
           <span class="font-bold text-white text-lg tracking-wider">
@@ -199,16 +199,16 @@ const features = [
           >Pricing</a>
           <NuxtLink
             :to="isAuthenticated ? '/chat' : '/login'"
-            class="flex items-center gap-2 border border-term-green/50 bg-term-green/10 px-4 py-2 text-term-green hover:bg-term-green/20 hover:border-term-green transition-all"
+            class="flex items-center gap-2 bg-term-green/10 hover:bg-term-green/20 px-4 py-2 border border-term-green/50 hover:border-term-green text-term-green transition-all"
           >
-            <span class="inline-block h-1.5 w-1.5 bg-term-green animate-pulse" />
+            <span class="inline-block bg-term-green w-1.5 h-1.5 animate-pulse" />
             {{ isAuthenticated ? '[ open_chat ]' : '[ login ]' }}
           </NuxtLink>
         </div>
 
         <!-- Mobile Menu Toggle -->
         <button
-          class="md:hidden text-term-text hover:text-white p-2 transition-colors"
+          class="md:hidden p-2 text-term-text hover:text-white transition-colors"
           aria-label="Toggle mobile navigation"
           @click="mobileNavOpen = !mobileNavOpen"
         >
@@ -267,7 +267,7 @@ const features = [
       <!-- Mobile Dropdown -->
       <div
         v-if="mobileNavOpen"
-        class="md:hidden border-t border-term-border/50 bg-term-bg/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-4 text-xs"
+        class="md:hidden flex flex-col gap-4 bg-term-bg/95 backdrop-blur-xl px-6 py-4 border-term-border/50 border-t text-xs"
       >
         <a
           href="#features"
@@ -286,27 +286,27 @@ const features = [
         >Pricing</a>
         <NuxtLink
           :to="isAuthenticated ? '/chat' : '/login'"
-          class="flex items-center gap-2 border border-term-green/50 bg-term-green/10 px-4 py-2 text-term-green w-fit"
+          class="flex items-center gap-2 bg-term-green/10 px-4 py-2 border border-term-green/50 w-fit text-term-green"
           @click="mobileNavOpen = false"
         >
-          <span class="inline-block h-1.5 w-1.5 bg-term-green animate-pulse" />
+          <span class="inline-block bg-term-green w-1.5 h-1.5 animate-pulse" />
           {{ isAuthenticated ? '[ open_chat ]' : '[ login ]' }}
         </NuxtLink>
       </div>
     </header>
 
     <!-- ═══ HERO SECTION ═══ -->
-    <section class="relative mx-auto max-w-6xl px-6 pt-24 pb-20 md:pt-36 md:pb-32">
+    <section class="relative mx-auto px-6 pt-24 md:pt-36 pb-20 md:pb-32 max-w-6xl">
       <div class="flex flex-col items-center text-center">
         <!-- Version Badge -->
-        <div class="fade-in-up mb-8 inline-flex items-center gap-2 border border-term-border bg-term-panel/50 px-4 py-1.5 text-[10px] text-term-text/60 uppercase tracking-widest">
-          <span class="inline-block h-1.5 w-1.5 bg-term-green animate-pulse" />
+        <div class="inline-flex items-center gap-2 bg-term-panel/50 mb-8 px-4 py-1.5 border border-term-border text-[10px] text-term-text/60 uppercase tracking-widest fade-in-up">
+          <span class="inline-block bg-term-green w-1.5 h-1.5 animate-pulse" />
           v0.1.0 — Early Access
         </div>
 
         <!-- Slogan -->
         <h1
-          class="fade-in-up delay-100 text-glow font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight tracking-tight max-w-3xl"
+          class="max-w-3xl font-bold text-glow text-white text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight delay-100 fade-in-up"
           style="font-family: 'Inter', sans-serif;"
         >
           Keeping you faultlessly connected.
@@ -314,20 +314,20 @@ const features = [
 
         <!-- Subtitle -->
         <p
-          class="fade-in-up delay-200 mt-6 max-w-xl text-sm md:text-base text-term-text/70 leading-relaxed"
+          class="mt-6 max-w-xl text-term-text/70 text-sm md:text-base leading-relaxed delay-200 fade-in-up"
           style="font-family: 'Inter', sans-serif;"
         >
           A fault-tolerant, terminal-first messenger built for developers who ship fast and can't afford dropped connections.
         </p>
 
         <!-- CTAs -->
-        <div class="fade-in-up delay-300 mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <div class="flex sm:flex-row flex-col items-center gap-4 mt-10 delay-300 fade-in-up">
           <NuxtLink
             id="cta-start-chatting"
             :to="isAuthenticated ? '/chat' : '/login'"
-            class="group relative inline-flex items-center gap-2 bg-term-green/15 border border-term-green/50 px-8 py-3 text-sm text-term-green font-semibold hover:bg-term-green/25 hover:border-term-green hover:shadow-[0_0_24px_rgba(74,222,128,0.2)] transition-all duration-300"
+            class="group inline-flex relative items-center gap-2 bg-term-green/15 hover:bg-term-green/25 hover:shadow-[0_0_24px_rgba(74,222,128,0.2)] px-8 py-3 border border-term-green/50 hover:border-term-green font-semibold text-term-green text-sm transition-all duration-300"
           >
-            <span class="inline-block h-2 w-2 bg-term-green animate-pulse" />
+            <span class="inline-block bg-term-green w-2 h-2 animate-pulse" />
             {{ isAuthenticated ? 'Open Chat' : 'Start Chatting' }}
           </NuxtLink>
           <a
@@ -335,7 +335,7 @@ const features = [
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 border border-term-border px-8 py-3 text-sm text-term-text/70 hover:text-white hover:border-term-text transition-all duration-300"
+            class="inline-flex items-center gap-2 px-8 py-3 border border-term-border hover:border-term-text text-term-text/70 hover:text-white text-sm transition-all duration-300"
           >
             { read_docs }
           </a>
@@ -343,17 +343,17 @@ const features = [
       </div>
 
       <!-- ── Interactive Terminal Mockup ── -->
-      <div class="fade-in-up delay-500 mx-auto mt-16 max-w-2xl">
-        <div class="terminal-chrome scanlines relative">
+      <div class="mx-auto mt-16 max-w-2xl delay-500 fade-in-up">
+        <div class="relative terminal-chrome scanlines">
           <!-- Titlebar -->
           <div class="terminal-titlebar">
-            <div class="terminal-dot bg-red-500/80" />
-            <div class="terminal-dot bg-yellow-500/80" />
-            <div class="terminal-dot bg-green-500/80" />
+            <div class="bg-red-500/80 terminal-dot" />
+            <div class="bg-yellow-500/80 terminal-dot" />
+            <div class="bg-green-500/80 terminal-dot" />
             <span class="ml-3 text-[10px] text-term-text/40 select-none">kfault — relay session</span>
           </div>
           <!-- Terminal Body -->
-          <div class="h-72 overflow-hidden px-5 py-4 text-xs leading-relaxed">
+          <div class="px-5 py-4 h-72 overflow-hidden text-xs leading-relaxed">
             <div
               v-for="(line, idx) in terminalLines"
               :key="idx"
@@ -379,7 +379,7 @@ const features = [
             </div>
             <span
               v-if="terminalReady"
-              class="cursor-blink text-white text-xs"
+              class="text-white text-xs cursor-blink"
             />
           </div>
         </div>
@@ -390,46 +390,46 @@ const features = [
     <section
       id="features"
       data-reveal
-      class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
+      class="relative mx-auto px-6 py-20 md:py-28 max-w-6xl"
     >
-      <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+      <div class="mb-16 text-center">
+        <p class="mb-3 text-[10px] text-term-text/40 uppercase tracking-[0.3em]">
           // features
         </p>
         <h2
-          class="font-bold text-2xl md:text-3xl text-white tracking-tight"
+          class="font-bold text-white text-2xl md:text-3xl tracking-tight"
           style="font-family: 'Inter', sans-serif;"
         >
           Built for developers, by developers
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="gap-5 grid grid-cols-1 md:grid-cols-2">
         <div
           v-for="(feat, i) in features"
           :key="feat.title"
-          class="glass-card p-6 md:p-8"
+          class="p-6 md:p-8 glass-card"
           :class="{
             'fade-in-up': revealedSections.has('features'),
             [`delay-${(i + 1) * 100}`]: revealedSections.has('features')
           }"
         >
-          <div class="text-2xl mb-4">
+          <div class="mb-4 text-2xl">
             {{ feat.icon }}
           </div>
           <h3
-            class="text-white font-semibold text-base mb-2"
+            class="mb-2 font-semibold text-white text-base"
             style="font-family: 'Inter', sans-serif;"
           >
             {{ feat.title }}
           </h3>
           <p
-            class="text-term-text/60 text-xs leading-relaxed mb-4"
+            class="mb-4 text-term-text/60 text-xs leading-relaxed"
             style="font-family: 'Inter', sans-serif;"
           >
             {{ feat.desc }}
           </p>
-          <div class="border border-term-border/50 bg-term-bg/50 px-3 py-2 text-[11px] text-term-green/80">
+          <div class="bg-term-bg/50 px-3 py-2 border border-term-border/50 text-[11px] text-term-green/80">
             <span class="text-term-text/30">›</span> {{ feat.snippet }}
           </div>
         </div>
@@ -440,20 +440,20 @@ const features = [
     <section
       id="demo"
       data-reveal
-      class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
+      class="relative mx-auto px-6 py-20 md:py-28 max-w-6xl"
     >
-      <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+      <div class="mb-16 text-center">
+        <p class="mb-3 text-[10px] text-term-text/40 uppercase tracking-[0.3em]">
           // interactive demo
         </p>
         <h2
-          class="font-bold text-2xl md:text-3xl text-white tracking-tight"
+          class="font-bold text-white text-2xl md:text-3xl tracking-tight"
           style="font-family: 'Inter', sans-serif;"
         >
           See fault-tolerance in action
         </h2>
         <p
-          class="mt-4 text-sm text-term-text/50 max-w-lg mx-auto"
+          class="mx-auto mt-4 max-w-lg text-term-text/50 text-sm"
           style="font-family: 'Inter', sans-serif;"
         >
           Simulate a network failure and watch KFault gracefully buffer, recover, and sync — with zero message loss.
@@ -464,24 +464,24 @@ const features = [
         <div class="terminal-chrome">
           <!-- Titlebar -->
           <div class="terminal-titlebar">
-            <div class="terminal-dot bg-red-500/80" />
-            <div class="terminal-dot bg-yellow-500/80" />
-            <div class="terminal-dot bg-green-500/80" />
+            <div class="bg-red-500/80 terminal-dot" />
+            <div class="bg-yellow-500/80 terminal-dot" />
+            <div class="bg-green-500/80 terminal-dot" />
             <span class="ml-3 text-[10px] text-term-text/40 select-none">kfault — fault simulator</span>
           </div>
           <!-- Simulator Body -->
-          <div class="px-5 py-6 space-y-5">
+          <div class="space-y-5 px-5 py-6">
             <!-- Status Display -->
-            <div class="flex items-center justify-between border-b border-term-border/30 pb-4">
+            <div class="flex justify-between items-center pb-4 border-term-border/30 border-b">
               <div class="flex items-center gap-2 text-xs">
                 <span
-                  class="inline-block h-2 w-2 rounded-full"
+                  class="inline-block rounded-full w-2 h-2"
                   :class="{
                     'bg-term-green animate-pulse': faultPhase === 'idle' || faultPhase === 'synced',
                     'bg-term-pink animate-pulse': faultPhase === 'simulating',
                     'bg-term-amber animate-pulse': faultPhase === 'recovering'
                   }"
-                />
+                ></span>
                 <span
                   :class="statusColor"
                   class="transition-colors duration-300"
@@ -496,11 +496,11 @@ const features = [
             </div>
 
             <!-- Queue Visualization -->
-            <div class="flex items-center gap-1.5 min-h-[32px]">
+            <div class="flex items-center gap-1.5 min-h-8">
               <div
                 v-for="n in queuedMessages"
                 :key="n"
-                class="flex items-center justify-center border text-[9px] h-7 w-7 transition-all duration-300"
+                class="flex justify-center items-center border w-7 h-7 text-[9px] transition-all duration-300"
                 :class="{
                   'border-term-pink bg-term-pink/10 text-term-pink': faultPhase === 'simulating',
                   'border-term-amber bg-term-amber/10 text-term-amber': faultPhase === 'recovering',
@@ -518,10 +518,10 @@ const features = [
             </div>
 
             <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <div class="flex sm:flex-row flex-col gap-3 pt-2">
               <button
                 id="sim-outage-btn"
-                class="flex-1 border border-term-pink/40 bg-term-pink/5 px-4 py-2.5 text-xs text-term-pink hover:bg-term-pink/15 hover:border-term-pink transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                class="flex-1 bg-term-pink/5 hover:bg-term-pink/15 disabled:opacity-30 px-4 py-2.5 border border-term-pink/40 hover:border-term-pink text-term-pink text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                 :disabled="faultPhase !== 'idle'"
                 @click="simulateFault('outage')"
               >
@@ -529,7 +529,7 @@ const features = [
               </button>
               <button
                 id="sim-packet-btn"
-                class="flex-1 border border-term-amber/40 bg-term-amber/5 px-4 py-2.5 text-xs text-term-amber hover:bg-term-amber/15 hover:border-term-amber transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                class="flex-1 bg-term-amber/5 hover:bg-term-amber/15 disabled:opacity-30 px-4 py-2.5 border border-term-amber/40 hover:border-term-amber text-term-amber text-xs transition-all cursor-pointer disabled:cursor-not-allowed"
                 :disabled="faultPhase !== 'idle'"
                 @click="simulateFault('packet-loss')"
               >
@@ -545,62 +545,62 @@ const features = [
     <section
       id="pricing"
       data-reveal
-      class="relative mx-auto max-w-6xl px-6 py-20 md:py-28"
+      class="relative mx-auto px-6 py-20 md:py-28 max-w-6xl"
     >
-      <div class="text-center mb-16">
-        <p class="text-[10px] text-term-text/40 uppercase tracking-[0.3em] mb-3">
+      <div class="mb-16 text-center">
+        <p class="mb-3 text-[10px] text-term-text/40 uppercase tracking-[0.3em]">
           // pricing
         </p>
         <h2
-          class="font-bold text-2xl md:text-3xl text-white tracking-tight"
+          class="font-bold text-white text-2xl md:text-3xl tracking-tight"
           style="font-family: 'Inter', sans-serif;"
         >
           Open source at its core
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="gap-6 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-3xl">
         <!-- Self-Hosted -->
         <div
-          class="glass-card p-8 flex flex-col"
+          class="flex flex-col p-8 glass-card"
           :class="{
             'fade-in-up': revealedSections.has('pricing')
           }"
         >
-          <p class="text-[10px] text-term-text/40 uppercase tracking-widest mb-4">
+          <p class="mb-4 text-[10px] text-term-text/40 uppercase tracking-widest">
             Self-Hosted
           </p>
           <div
-            class="text-3xl font-bold text-white mb-1"
+            class="mb-1 font-bold text-white text-3xl"
             style="font-family: 'Inter', sans-serif;"
           >
             $0
           </div>
-          <p class="text-xs text-term-text/40 mb-6">
+          <p class="mb-6 text-term-text/40 text-xs">
             forever free, forever yours
           </p>
           <ul
-            class="space-y-3 text-xs text-term-text/70 flex-1 mb-8"
+            class="flex-1 space-y-3 mb-8 text-term-text/70 text-xs"
             style="font-family: 'Inter', sans-serif;"
           >
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               Unlimited users & rooms
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               Full source code access
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               E2E encryption included
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               Deploy on your infrastructure
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               Community support
             </li>
           </ul>
@@ -609,7 +609,7 @@ const features = [
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="block border border-term-green/50 bg-term-green/10 py-3 text-center text-sm text-term-green font-semibold hover:bg-term-green/20 hover:border-term-green transition-all"
+            class="block bg-term-green/10 hover:bg-term-green/20 py-3 border border-term-green/50 hover:border-term-green font-semibold text-term-green text-sm text-center transition-all"
           >
             git clone →
           </a>
@@ -617,7 +617,7 @@ const features = [
 
         <!-- Managed Cloud -->
         <div
-          class="glass-card p-8 flex flex-col border-term-glow/30"
+          class="flex flex-col p-8 border-term-glow/30 glass-card"
           :class="{
             'fade-in-up delay-200': revealedSections.has('pricing')
           }"
@@ -626,45 +626,45 @@ const features = [
             <p class="text-[10px] text-term-text/40 uppercase tracking-widest">
               Managed Cloud
             </p>
-            <span class="px-2 py-0.5 text-[9px] bg-term-glow/15 border border-term-glow/30 text-term-glow uppercase tracking-wider">Soon</span>
+            <span class="bg-term-glow/15 px-2 py-0.5 border border-term-glow/30 text-[9px] text-term-glow uppercase tracking-wider">Soon</span>
           </div>
           <div
-            class="text-3xl font-bold text-white mb-1"
+            class="mb-1 font-bold text-white text-3xl"
             style="font-family: 'Inter', sans-serif;"
           >
             $9
           </div>
-          <p class="text-xs text-term-text/40 mb-6">
+          <p class="mb-6 text-term-text/40 text-xs">
             per user / month
           </p>
           <ul
-            class="space-y-3 text-xs text-term-text/70 flex-1 mb-8"
+            class="flex-1 space-y-3 mb-8 text-term-text/70 text-xs"
             style="font-family: 'Inter', sans-serif;"
           >
             <li class="flex items-start gap-2">
-              <span class="text-term-green mt-0.5">✓</span>
+              <span class="mt-0.5 text-term-green">✓</span>
               Everything in Self-Hosted
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-cyan mt-0.5">+</span>
+              <span class="mt-0.5 text-term-cyan">+</span>
               Managed relay infrastructure
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-cyan mt-0.5">+</span>
+              <span class="mt-0.5 text-term-cyan">+</span>
               99.99% uptime SLA
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-cyan mt-0.5">+</span>
+              <span class="mt-0.5 text-term-cyan">+</span>
               Priority support & onboarding
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-term-cyan mt-0.5">+</span>
+              <span class="mt-0.5 text-term-cyan">+</span>
               Advanced analytics dashboard
             </li>
           </ul>
           <button
             id="pricing-managed"
-            class="block w-full border border-term-border py-3 text-center text-sm text-term-text/50 cursor-not-allowed"
+            class="block py-3 border border-term-border w-full text-term-text/50 text-sm text-center cursor-not-allowed"
             disabled
           >
             Coming Soon
@@ -674,18 +674,18 @@ const features = [
     </section>
 
     <!-- ═══ FOOTER ═══ -->
-    <footer class="border-t border-term-border/30 mt-12">
-      <div class="mx-auto max-w-6xl px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer class="mt-12 border-term-border/30 border-t">
+      <div class="flex md:flex-row flex-col justify-between items-center gap-6 mx-auto px-6 py-12 max-w-6xl">
         <!-- Left -->
-        <div class="flex items-center gap-3 text-xs text-term-text/40">
-          <div class="flex h-6 w-6 items-center justify-center border border-term-border bg-term-panel text-term-green font-bold text-[10px]">
+        <div class="flex items-center gap-3 text-term-text/40 text-xs">
+          <div class="flex justify-center items-center bg-term-panel border border-term-border w-6 h-6 font-bold text-[10px] text-term-green">
             K
           </div>
           <span>&copy; 2026 KFault — MIT License</span>
         </div>
 
         <!-- Right -->
-        <div class="flex items-center gap-6 text-xs text-term-text/40">
+        <div class="flex items-center gap-6 text-term-text/40 text-xs">
           <a
             href="https://github.com"
             target="_blank"
@@ -697,7 +697,7 @@ const features = [
             class="hover:text-white transition-colors"
           >Docs</a>
           <div class="flex items-center gap-1.5">
-            <span class="inline-block h-1.5 w-1.5 bg-term-green animate-pulse" />
+            <span class="inline-block bg-term-green w-1.5 h-1.5 animate-pulse" />
             <span class="text-term-green/60">status: operational</span>
           </div>
         </div>
